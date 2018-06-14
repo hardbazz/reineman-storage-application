@@ -4,7 +4,7 @@
 
     <h1>Klanten</h1>
 
-    <a href="#" class="btn btn-success float-left">+ Nieuw</a>
+    <a href="/clients/create" class="btn btn-success float-left">+ Nieuw</a>
 
     @foreach($clients as $client)
         <table class="table table-striped">
