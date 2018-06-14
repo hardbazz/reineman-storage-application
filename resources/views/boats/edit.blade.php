@@ -4,7 +4,7 @@
 
     <h1>Bewerk klant</h1>
 
-    {!! Form::open(['method' => 'PATCH', 'url' => 'clients/edit/' . $boats[0]->bid]) !!}
+    {!! Form::open(['method' => 'PATCH', 'url' => 'boats/edit/' . $boats[0]->bid]) !!}
 
     {!! Form::hidden('bid', $boats[0]->bid, '') !!}
 
