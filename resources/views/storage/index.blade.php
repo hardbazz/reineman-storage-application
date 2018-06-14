@@ -6,20 +6,19 @@
 
     <div class="row text-center text-lg-left">
 
-        @for ( $i = 1; $i <= 50; $i++ )
+        {{--@for ( $i = 1; $i <= 50; $i++ )--}}
 
+        @foreach ($storage as $spot)
         <div class="col-lg-3 col-md-4 col-xs-6">
             <a href="#" class="d-block mb-4 h-100">
-                {{--<img class="img-fluid img-thumbnail" src="{{ URL::asset('img/available.png') }}" alt="">--}}
-
-                <div class="spot" style="text-align: center;">
-                    <span style="color: #fff; margin-top: 15px; font-size: 20px;">Vrij</span>
+                <div class="spot">
+                        <span>{{ $spot->spot }}</span>
                 </div>
-
             </a>
         </div>
+        @endforeach
 
-        @endfor
+        {{--@endfor--}}
 
     </div>
 
