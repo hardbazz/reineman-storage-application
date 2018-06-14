@@ -31,15 +31,15 @@
     </button>
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav mr-auto">
+        <ul class="nav navbar-nav mr-auto">
             <li class="nav-item active">
-                <a class="nav-link" href="#">Stalling</a>
+                <a class="nav-link" href="/">Stalling</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">Boten</a>
+                <a class="nav-link" href="/boats">Boten</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">Klanten</a>
+                <a class="nav-link" href="/clients">Klanten</a>
             </li>
         </ul>
         {{--<form class="form-inline my-2 my-lg-0">--}}
@@ -85,6 +85,13 @@
 
 <!-- Scripts -->
 <script src="{{ asset('js/app.js') }}"></script>
+
+<script>
+    $(".nav a").on("click", function(){
+        $(".nav").find(".active").removeClass("active");
+        $(this).parent().addClass("active");
+    });
+</script>
 
 {{--<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>--}}
 

@@ -15,3 +15,5 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/', 'StorageController@index');
+Route::get('/boats', 'BoatController@index');
+Route::get('/clients', 'ClientController@index');
