@@ -18,3 +18,4 @@ Route::get('/', 'StorageController@index');
 Route::get('/boats', 'BoatController@index');
 Route::get('/clients', 'ClientController@index');
 Route::get('/clients/create', 'ClientController@create');
+Route::post('/clients', 'ClientController@store');
