@@ -18,4 +18,7 @@ Route::get('/', 'StorageController@index');
 Route::get('/boats', 'BoatController@index');
 Route::get('/clients', 'ClientController@index');
 Route::get('/clients/create', 'ClientController@create');
+Route::get('/clients/{id}/edit', 'ClientController@edit');
 Route::post('/clients', 'ClientController@store');
+Route::patch('clients/edit/{id}', 'ClientController@update');
+Route::delete('clients/{id}', 'ClientController@destroy');

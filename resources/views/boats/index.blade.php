@@ -12,7 +12,9 @@
             <th scope="col">Boot</th>
             <th scope="col">Model</th>
             <th scope="col">Lengte</th>
-            <th scope="col">Width</th>
+            <th scope="col">Breedte</th>
+            <th scope="col"></th>
+            <th scope="col"></th>
         </tr>
         </thead>
         <tbody>
@@ -22,6 +24,12 @@
             <td>{{ $boat->model }}</td>
             <td>{{ $boat->length }} meter</td>
             <td>{{ $boat->width }} meter</td>
+            <td><a href="/boats/{{ $boat->cid }}/edit" class="btn btn-primary">Bewerk</a></td>
+            <td>
+                {!! Form::open([ 'method'  => 'DELETE', 'url' => 'boats/' . $boat->cid ]) !!}
+                {!! Form::submit('Verwijder', ['class' => 'btn btn-danger']) !!}
+                {!! Form::close() !!}
+            </td>
         </tr>
         </tbody>
     </table>

@@ -30,8 +30,12 @@
                 <td>{{ $client->city }}</td>
                 <td><a href="tel:{{ $client->phone }}">{{ $client->phone }}</a></td>
                 <td><a href="mailto:{{ $client->email }}">{{ $client->email }}</a></td>
-                <td><a style="color: #008000" href="#"><i class="fa fa-edit"></i></a></td>
-                <td><a style="color: #ff0000" href="#"><i class="fa fa-trash"></i></a></td>
+                <td><a href="/clients/{{ $client->cid }}/edit" class="btn btn-primary">Bewerk</a></td>
+                <td>
+                    {!! Form::open([ 'method'  => 'DELETE', 'url' => 'clients/' . $client->cid ]) !!}
+                    {!! Form::submit('Verwijder', ['class' => 'btn btn-danger']) !!}
+                    {!! Form::close() !!}
+                </td>
             </tr>
             @endforeach
             </tbody>

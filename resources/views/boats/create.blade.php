@@ -22,7 +22,7 @@
     </div>
 
     <div class="form-group">
-        {!! Form::label('housenumber', 'housenumber') !!}
+        {!! Form::label('housenumber', 'Huisnummer') !!}
         {!! Form::text('housenumber', old('housenumber', $clients[0]->housenumber), array('class' => 'form-control')) !!}
     </div>
 
@@ -43,7 +43,7 @@
 
     <div class="form-group">
         {!! Form::label('email', 'E-mail') !!}
-        {!! Form::text('email', old('email', $clients[0]->email), array('class' => 'form-control')) !!}
+        {!! Form::email('email', old('email', $clients[0]->email), array('class' => 'form-control')) !!}
     </div>
 
     {!! Form::submit('Opslaan', array('class' => 'btn btn-success')) !!}
