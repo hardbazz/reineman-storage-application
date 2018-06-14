@@ -4,6 +4,7 @@
 
     <h1>Boten</h1>
 
+    @foreach($boats as $boat)
     <table class="table table-striped">
         <thead>
         <tr>
@@ -17,12 +18,13 @@
         <tbody>
         <tr>
             <th scope="row">1</th>
-            <td>Hellwig</td>
-            <td>520</td>
-            <td>5,20 meter</td>
-            <td>1,20 meter</td>
+            <td>{{ ucfirst($boat->name) }}</td>
+            <td>{{ $boat->model }}</td>
+            <td>{{ $boat->length }} meter</td>
+            <td>{{ $boat->width }} meter</td>
         </tr>
         </tbody>
     </table>
+    @endforeach
 
 @stop
