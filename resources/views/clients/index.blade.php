@@ -2,6 +2,10 @@
 
 @section('content')
 
+    @if (Auth::guest())
+        <h2>Eerst even inloggen</h2>
+    @else
+
     <h1>Klanten</h1>
 
     <a href="/clients/create" class="btn_new btn btn-success float-left">+ Nieuw</a>
@@ -16,6 +20,7 @@
                 <th scope="col">Plaats</th>
                 <th scope="col">Telefoon</th>
                 <th scope="col">E-mail</th>
+                <th scope="col">Boot</th>
                 <th scope="col"></th>
                 <th scope="col"></th>
             </tr>
@@ -30,6 +35,7 @@
                 <td>{{ $client->city }}</td>
                 <td><a href="tel:{{ $client->phone }}">{{ $client->phone }}</a></td>
                 <td><a href="mailto:{{ $client->email }}">{{ $client->email }}</a></td>
+                <td><a href="clients/{{ $client->cid }}"><i class="fa fa-2x fa-info"></i></a></td>
                 <td><a href="/clients/{{ $client->cid }}/edit" class="btn btn-primary">Bewerk</a></td>
                 <td>
                     {!! Form::open([ 'method'  => 'DELETE', 'url' => 'clients/' . $client->cid ]) !!}
@@ -40,5 +46,7 @@
             @endforeach
             </tbody>
         </table>
+
+    @endif
 
 @stop

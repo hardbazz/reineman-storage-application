@@ -2,6 +2,10 @@
 
 @section('content')
 
+    @if (Auth::guest())
+        <h2>Eerst even inloggen</h2>
+    @else
+
     <h1 class="my-4 text-center text-lg-left">Stalling</h1>
 
     <div class="row text-center text-lg-left">
@@ -21,5 +25,7 @@
         {{--@endfor--}}
 
     </div>
+
+    @endif
 
 @stop

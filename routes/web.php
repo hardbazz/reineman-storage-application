@@ -12,10 +12,11 @@
 */
 
 Auth::routes();
+Route::get('/home', 'HomeController@index')->name('home');
 
 // Routes for clients
-Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/clients', 'ClientController@index');
+Route::get('/clients/{id}', 'ClientController@show');
 Route::get('/clients/create', 'ClientController@create');
 Route::get('/clients/{id}/edit', 'ClientController@edit');
 Route::post('/clients', 'ClientController@store');
@@ -24,6 +25,7 @@ Route::delete('clients/{id}', 'ClientController@destroy');
 
 // Routes for boats
 Route::get('/boats', 'BoatController@index');
+Route::get('/boats/{id}', 'BoatController@show');
 Route::get('/boats/create', 'BoatController@create');
 Route::get('/boats/{id}/edit', 'BoatController@edit');
 Route::post('/boats', 'BoatController@store');

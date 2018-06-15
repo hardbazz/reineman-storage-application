@@ -2,6 +2,10 @@
 
 @section('content')
 
+    @if (Auth::guest())
+        <h2>Eerst even inloggen</h2>
+    @else
+
     <h1>Boten</h1>
 
     <a href="/boats/create" class="btn_new btn btn-success float-left">+ Nieuw</a>
@@ -14,6 +18,7 @@
             <th scope="col">Model</th>
             <th scope="col">Lengte</th>
             <th scope="col">Breedte</th>
+            <th scope="col">Klant</th>
             <th scope="col"></th>
             <th scope="col"></th>
         </tr>
@@ -26,6 +31,7 @@
             <td>{{ $boat->model }}</td>
             <td>{{ $boat->length }} meter</td>
             <td>{{ $boat->width }} meter</td>
+            <td><a href="boats/{{ $boat->bid }}"><i class="fa fa-2x fa-info"></i></a></td>
             <td><a href="/boats/{{ $boat->bid }}/edit" class="btn btn-primary">Bewerk</a></td>
             <td>
                 {!! Form::open([ 'method'  => 'DELETE', 'url' => 'boats/' . $boat->bid ]) !!}
@@ -36,5 +42,7 @@
         @endforeach
         </tbody>
     </table>
+
+    @endif
 
 @stop
