@@ -16,7 +16,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 // Routes for clients
 Route::get('/clients', 'ClientController@index');
-Route::get('/clients/{id}', 'ClientController@show');
+Route::get('/client/{id}', 'ClientController@show');
 Route::get('/clients/create', 'ClientController@create');
 Route::get('/clients/{id}/edit', 'ClientController@edit');
 Route::post('/clients', 'ClientController@store');

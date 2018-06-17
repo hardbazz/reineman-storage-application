@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Boat;
+use App\Client;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\View;
 
 class BoatController extends Controller
 {
@@ -41,8 +43,9 @@ class BoatController extends Controller
     public function edit($id)
     {
         $boats = Boat::select()->where('bid', '=', $id)->get();
+        $clients = Client::select('cid', 'bid', 'firstname', 'lastname')->get();
 
-        return view('boats.edit', compact('boats'));
+        return View::make('boats.edit', compact('boats', 'clients'));
     }
 
     public function update($id, Request $request)

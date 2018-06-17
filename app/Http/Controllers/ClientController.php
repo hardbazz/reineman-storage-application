@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Boat;
 use App\Client;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
@@ -17,20 +18,23 @@ class ClientController extends Controller
     }
 
     public function show($id) {
-        $clients = Client::with('boats')
+        $client = Client::with('boats')
             ->join('boats', 'boats.cid', '=', 'clients.cid')
             ->select('clients.*', 'boats.*')
             ->find($id);
-//        dd($car);
 
-        return view('clients.show', compact('clients'));
+//        dd($client);
+
+        return view('clients.show', compact('client'));
     }
 
     public function create()
     {
-        $clients = Client::select('cid')->get();
+        $clients = Client::select('cid', 'bid')->get();
+        $boats   = Boat::select('bid', 'cid', 'name')->get();
 
-        return view('clients.create', compact('clients'));
+//        return view('clients.create', compact('clients'));
+        return View::make('clients.create', compact('clients', 'boats'))->withClient(new Client);
     }
 
     public function store(Request $request)
@@ -43,8 +47,9 @@ class ClientController extends Controller
     public function edit($id)
     {
         $clients = Client::select()->where('cid', '=', $id)->get();
+        $boats   = Boat::select('bid', 'cid', 'name')->get();
 
-        return view('clients.edit', compact('clients'));
+        return view('clients.edit', compact('clients', 'boats'));
     }
 
     public function update($id, Request $request)

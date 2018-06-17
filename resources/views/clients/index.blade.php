@@ -35,7 +35,7 @@
                 <td>{{ $client->city }}</td>
                 <td><a href="tel:{{ $client->phone }}">{{ $client->phone }}</a></td>
                 <td><a href="mailto:{{ $client->email }}">{{ $client->email }}</a></td>
-                <td><a href="clients/{{ $client->cid }}"><i class="fa fa-2x fa-info"></i></a></td>
+                <td><a href="client/{{ $client->cid }}"><i class="fa fa-2x fa-info"></i></a></td>
                 <td><a href="/clients/{{ $client->cid }}/edit" class="btn btn-primary">Bewerk</a></td>
                 <td>
                     {!! Form::open([ 'method'  => 'DELETE', 'url' => 'clients/' . $client->cid ]) !!}

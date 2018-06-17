@@ -28,6 +28,17 @@
         {!! Form::text('width', old('width', $boats[0]->width), array('class' => 'form-control')) !!}
     </div>
 
+    <div class="form-group">
+        {!! Form::label('client', 'Klant') !!}
+
+        <select name="boat" class="form-control">
+            @foreach($clients as $client)
+                <option value="{{ $client->bid }}" @if($client->bid == $boats[0]->bid) {{ "selected" }} @endif> {{ $client->firstname . ' ' . $client->lastname }} </option>
+            @endforeach
+        </select>
+
+    </div>
+
     {!! Form::submit('Opslaan', array('class' => 'btn btn-success')) !!}
 
     {!! Form::close() !!}

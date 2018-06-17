@@ -48,6 +48,17 @@
         {!! Form::email('email', old('email', $clients[0]->email), array('class' => 'form-control')) !!}
     </div>
 
+    <div class="form-group">
+        {!! Form::label('boat', 'Boot') !!}
+
+        <select name="boat" class="form-control">
+            @foreach($boats as $boat)
+                <option value="{{ $boat->bid }}" @if($boat->bid == $clients[0]->bid) {{ "selected" }} @endif> {{ $boat->name }} </option>
+            @endforeach
+        </select>
+
+    </div>
+
 
     {!! Form::submit('Opslaan', array('class' => 'btn btn-success')) !!}
 
