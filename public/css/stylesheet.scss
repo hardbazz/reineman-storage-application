@@ -4,6 +4,10 @@ h1, h2 {
   margin: 25px 0;
 }
 
+form {
+  margin: 0 0 25px 0;
+}
+
 /* End Standerd stylings */
 
 .spot {
@@ -23,6 +27,16 @@ h1, h2 {
 
 .btn_new {
   margin: 15px 0;
+}
+
+.container {
+  .table   {
+    margin-top: 25px;
+
+    &:first-child {
+      margin-top: 0;
+    }
+  }
 }
 
 @media (min-width: 992px) {

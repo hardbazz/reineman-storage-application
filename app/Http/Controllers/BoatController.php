@@ -43,9 +43,10 @@ class BoatController extends Controller
     public function edit($id)
     {
         $boats = Boat::select()->where('bid', '=', $id)->get();
-        $clients = Client::select('cid', 'bid', 'firstname', 'lastname')->get();
+//        $clients = Client::select('cid', 'bid', 'firstname', 'lastname')->get();
 
-        return View::make('boats.edit', compact('boats', 'clients'));
+//        return View::make('boats.edit', compact('boats', 'clients'));
+        return view('boats.edit', compact('boats'));
     }
 
     public function update($id, Request $request)

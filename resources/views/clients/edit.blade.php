@@ -4,56 +4,56 @@
 
     <h1>Bewerk klant</h1>
 
-    {!! Form::open(['method' => 'PATCH', 'url' => 'clients/edit/' . $clients[0]->cid]) !!}
+    {!! Form::open(['method' => 'PATCH', 'url' => 'clients/edit/' . $clients->cid]) !!}
 
-    {!! Form::hidden('cid', $clients[0]->cid, '') !!}
+    {!! Form::hidden('cid', $clients->cid, '') !!}
 
     <div class="form-group">
         {!! Form::label('firstname', 'Voornaam') !!}
-        {!! Form::text('firstname', old('firstname', $clients[0]->firstname), array('class' => 'form-control')) !!}
+        {!! Form::text('firstname', old('firstname', $clients->firstname), array('class' => 'form-control')) !!}
     </div>
 
     <div class="form-group">
         {!! Form::label('lastname', 'Achternaam') !!}
-        {!! Form::text('lastname', old('lastname', $clients[0]->lastname), array('class' => 'form-control')) !!}
+        {!! Form::text('lastname', old('lastname', $clients->lastname), array('class' => 'form-control')) !!}
     </div>
 
     <div class="form-group">
         {!! Form::label('street', 'Straat') !!}
-        {!! Form::text('street', old('street', $clients[0]->street), array('class' => 'form-control')) !!}
+        {!! Form::text('street', old('street', $clients->street), array('class' => 'form-control')) !!}
     </div>
 
     <div class="form-group">
         {!! Form::label('housenumber', 'Huisnummer') !!}
-        {!! Form::text('housenumber', old('housenumber', $clients[0]->housenumber), array('class' => 'form-control')) !!}
+        {!! Form::text('housenumber', old('housenumber', $clients->housenumber), array('class' => 'form-control')) !!}
     </div>
 
     <div class="form-group">
         {!! Form::label('zipcode', 'Postcode') !!}
-        {!! Form::text('zipcode', old('zipcode', $clients[0]->zipcode), array('class' => 'form-control')) !!}
+        {!! Form::text('zipcode', old('zipcode', $clients->zipcode), array('class' => 'form-control')) !!}
     </div>
 
     <div class="form-group">
         {!! Form::label('city', 'Plaats') !!}
-        {!! Form::text('city', old('city', $clients[0]->city), array('class' => 'form-control')) !!}
+        {!! Form::text('city', old('city', $clients->city), array('class' => 'form-control')) !!}
     </div>
 
     <div class="form-group">
         {!! Form::label('phone', 'Telefoon') !!}
-        {!! Form::text('phone', old('phone', $clients[0]->phone), array('class' => 'form-control')) !!}
+        {!! Form::text('phone', old('phone', $clients->phone), array('class' => 'form-control')) !!}
     </div>
 
     <div class="form-group">
         {!! Form::label('email', 'E-mail') !!}
-        {!! Form::email('email', old('email', $clients[0]->email), array('class' => 'form-control')) !!}
+        {!! Form::email('email', old('email', $clients->email), array('class' => 'form-control')) !!}
     </div>
 
     <div class="form-group">
-        {!! Form::label('boat', 'Boot') !!}
+        {!! Form::label('bid', 'Boot') !!}
 
-        <select name="boat" class="form-control">
+        <select name="bid" class="form-control">
             @foreach($boats as $boat)
-                <option value="{{ $boat->bid }}" @if($boat->bid == $clients[0]->bid) {{ "selected" }} @endif> {{ $boat->name }} </option>
+                <option value="{{ $boat->bid }}" @if($clients->bid == $boat->bid) {{ "selected" }} @endif> {{ ucfirst($boat->name) . ' ' . $boat->model }} </option>
             @endforeach
         </select>
 

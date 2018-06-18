@@ -23,7 +23,7 @@
         </tr>
         <tr>
             <th>Plaats</th>
-            <td>A1</td>
+            <td>{!! ucfirst($client->spot) !!}</td>
         </tr>
     </table>
 

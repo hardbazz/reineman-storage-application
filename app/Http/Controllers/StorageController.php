@@ -14,4 +14,15 @@ class StorageController extends Controller
         
         return view('storage.index', compact('storage'));
     }
+
+    public function show($id) {
+        $storage = Storage::with('clients')
+            ->join('clients', 'storage.cid', '=', 'clients.cid')
+            ->join('boats', 'clients.bid', '=', 'boats.bid')
+            ->select('storage.*', 'clients.*', 'boats.*')
+            ->find($id);
+
+//        dd($client);
+        return view('storage.show', compact('storage'));
+    }
 }

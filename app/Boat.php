@@ -11,6 +11,7 @@ class Boat extends Model
     protected $primaryKey = 'bid';
 
     protected $fillable = [
+        'bid',
         'name',
         'model',
         'length',

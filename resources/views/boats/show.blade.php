@@ -31,7 +31,7 @@
             </tr>
         </table>
 
-        <a href="/clients" class="btn btn-primary"><i class="fa fa-angle-left"></i> Ga terug</a>
+        <a href="/boats" class="btn btn-primary"><i class="fa fa-angle-left"></i> Ga terug</a>
 
     @endif
 

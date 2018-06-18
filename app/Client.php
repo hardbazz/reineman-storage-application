@@ -11,6 +11,7 @@ class Client extends Model
     protected $primaryKey = 'cid';
 
     protected $fillable = [
+        'bid',
         'firstname',
         'lastname',
         'street',
@@ -18,7 +19,7 @@ class Client extends Model
         'zipcode',
         'city',
         'phone',
-        'email',
+        'email'
     ];
 
     public function boats()
