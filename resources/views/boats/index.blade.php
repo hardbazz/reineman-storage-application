@@ -2,9 +2,11 @@
 
 @section('content')
 
-    @if (Auth::guest())
+    @guest
         <h2>Eerst even inloggen</h2>
-    @else
+    @endguest
+
+    @auth
 
     <h1>Boten</h1>
 
@@ -43,6 +45,6 @@
         </tbody>
     </table>
 
-    @endif
+    @endauth
 
 @stop

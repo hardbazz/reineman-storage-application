@@ -31,7 +31,7 @@ class ClientController extends Controller
     public function create()
     {
         $clients = Client::select('cid', 'bid')->get();
-        $boats   = Boat::select('bid', 'cid', 'name')->get();
+        $boats   = Boat::select('bid', 'name')->get();
 
 //        return view('clients.create', compact('clients'));
         return View::make('clients.create', compact('clients', 'boats'))->withClient(new Client);
@@ -47,7 +47,7 @@ class ClientController extends Controller
     public function edit($id)
     {
         $clients = Client::findOrFail($id);
-        $boats   = Boat::select('bid', 'cid', 'name', 'model')->get();
+        $boats   = Boat::select('bid', 'name', 'model')->get();
 
 //        dd($boats);
         return View::make('clients.edit', compact('clients', 'boats'));

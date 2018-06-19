@@ -35,3 +35,7 @@ Route::delete('boats/{id}', 'BoatController@destroy');
 // Routes for storage
 Route::get('/', 'StorageController@index');
 Route::get('/storage/{id}', 'StorageController@show');
+Route::get('/storage/create', 'StorageController@create');
+Route::get('/storage/{id}/edit', 'StorageController@edit');
+Route::post('/storage', 'StorageController@store');
+Route::patch('storage/edit/{id}', 'StorageController@update');

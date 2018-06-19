@@ -11,7 +11,7 @@
     <table class="table table-striped">
         <tr>
             <th>Klant:</th>
-            <td>{!! ucfirst($storage->firstname) !!} {!! $storage->lastname!!}</td>
+            <td><a href="/client/{{ $storage->cid }}">{!! ucfirst($storage->firstname) !!} {!! $storage->lastname!!}</a></td>
         </tr>
         <tr>
             <th>Boot</th>
@@ -25,12 +25,11 @@
             <th>Breedte</th>
             <td>{!! $storage->width !!} meter</td>
         </tr>
-    </table>
-
-    <table class="table table-striped">
         <tr>
-            <th>A</th>
-            <td>YO!</td>
+            <td></td>
+            <td>
+                <a href="/storage/{{ $storage->sid }}/edit" class="btn btn-primary">Bewerk</a>
+            </td>
         </tr>
     </table>
 
