@@ -2,7 +2,7 @@
 
 @section('content')
 
-    <h1>Klant toevoegen</h1>
+    <h1>Boot toevoegen</h1>
 
     {!! Form::open(['url' => 'boats']) !!}
 

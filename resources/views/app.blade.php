@@ -41,10 +41,10 @@
                 <a class="nav-link" href="/">Stalling</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="/boats">Boten</a>
+                <a class="nav-link" href="/clients">Klanten</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="/clients">Klanten</a>
+                <a class="nav-link" href="/boats">Boten</a>
             </li>
         </ul>
         {{--<form class="form-inline my-2 my-lg-0">--}}

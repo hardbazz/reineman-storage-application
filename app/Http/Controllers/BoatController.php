@@ -17,19 +17,22 @@ class BoatController extends Controller
     }
 
     public function show($id) {
-        $boats = Boat::with('clients')
+        $boat = Boat::with('clients')
             ->join('clients', 'clients.bid', '=', 'boats.bid')
             ->select('boats.*', 'clients.*')
             ->find($id);
-//        dd($car);
 
-        return view('boats.show', compact('boats'));
+//        dd($boat);
+        return view('boats.show', compact('boat'));
     }
 
     public function create()
     {
-        $boats = Boat::select('bid')->get();
+        $boats   = Boat::select('bid', 'name')->get();
+//        $clients = Client::select('cid', 'bid')->get();
 
+//        dd($clients, $boats);
+//        return View::make('boats.create', compact('boats', 'clients'))->withClient(new Client);
         return view('boats.create', compact('boats'));
     }
 

@@ -20,8 +20,8 @@ class ClientController extends Controller
     public function show($id) {
         $client = Client::with('boats')
             ->join('boats', 'boats.bid', '=', 'clients.bid')
-            ->join('storage', 'storage.cid', '=', 'clients.cid')
-            ->select('clients.*', 'boats.*', 'storage.*')
+//            ->join('storage', 'storage.cid', '=', 'clients.cid')
+            ->select('clients.*', 'boats.*') //, 'storage.*'
             ->find($id);
 
 //        dd($client);

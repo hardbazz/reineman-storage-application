@@ -26,4 +26,9 @@ class Client extends Model
     {
         return $this->belongsTo('App\Client');
     }
+
+    public function storage()
+    {
+        return $this->belongsTo('App\Client');
+    }
 }

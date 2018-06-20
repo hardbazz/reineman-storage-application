@@ -2,11 +2,9 @@
 
 @section('content')
 
-    <h1>Bewerk plaats</h1>
+    <h1>Plek toekennen</h1>
 
-    {!! Form::open(['method' => 'PATCH', 'url' => 'storage/edit/' . $storage->cid]) !!}
-
-    {!! Form::hidden('sid', $storage->sid, '') !!}
+    {!! Form::open(['url' => 'storage']) !!}
 
     <div class="form-group">
         {!! Form::label('cid', 'Klant') !!}
@@ -19,7 +17,6 @@
         </select>
 
     </div>
-
 
     {!! Form::submit('Opslaan', array('class' => 'btn btn-success')) !!}
 

@@ -22,4 +22,9 @@ class Boat extends Model
     {
         return $this->belongsTo('App\Boat');
     }
+
+    public function storage()
+    {
+        return $this->belongsTo('App\Boat');
+    }
 }
