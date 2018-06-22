@@ -8,6 +8,8 @@
 
     @auth
 
+    @if(!empty($client))
+
     <h2>Boot van {{ ucfirst($client->firstname) }} {{ ucfirst($client->lastname) }}</h2>
 
     <table class="table table-striped">
@@ -30,6 +32,14 @@
     </table>
 
     <a href="/clients" class="btn btn-primary"><i class="fa fa-angle-left"></i> Ga terug</a>
+
+    @else
+
+        <h1>Voeg eerst een boot toe</h1>
+
+        <a href="/clients" class="btn btn-primary"><i class="fa fa-angle-left"></i> Koppel een boot</a>
+
+    @endif
 
     @endauth
 

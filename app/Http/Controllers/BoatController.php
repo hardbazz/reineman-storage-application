@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Boat;
 use App\Client;
+use App\Http\Requests\BoatRequest;
 use App\Storage;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\View;
@@ -42,7 +43,7 @@ class BoatController extends Controller
         return view('boats.create', compact('boats'));
     }
 
-    public function store(Request $request)
+    public function store(BoatRequest $request)
     {
         Boat::create($request->all());
 
@@ -64,7 +65,7 @@ class BoatController extends Controller
 
     }
 
-    public function update($id, Request $request)
+    public function update($id, BoatRequest $request)
     {
         $boats = Boat::findOrFail($id);
         $boats->update($request->all());

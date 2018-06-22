@@ -8,6 +8,8 @@
 
     @auth
 
+        @if(!empty($boat))
+
         <h2>Klant: {{ ucfirst($boat->firstname) }} {{ ucfirst($boat->lastname) }} @if(!empty($boat->spot)) - Plaats: {{ ucfirst($storage->spot) }} @else @endif</h2>
 
         <table class="table table-striped">
@@ -34,6 +36,14 @@
         </table>
 
         <a href="/boats" class="btn btn-primary"><i class="fa fa-angle-left"></i> Ga terug</a>
+
+        @else
+
+        <h1>Voeg eerst een boot toe</h1>
+
+        <a href="/clients" class="btn btn-primary"><i class="fa fa-angle-left"></i> Koppel een boot</a>
+
+        @endif
 
     @endauth
 

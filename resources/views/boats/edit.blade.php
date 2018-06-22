@@ -35,20 +35,20 @@
         {!! Form::text('width', old('width', $boats[0]->width), array('class' => 'form-control')) !!}
     </div>
 
-    {{--<div class="form-group">--}}
-        {{--{!! Form::label('sid', 'Plek') !!}--}}
-
-        {{--<select name="sid" class="form-control">--}}
-            {{--<option value="">-</option>--}}
-            {{--@foreach($storage as $spot)--}}
-                {{--<option value="{{ $spot->sid }}" @if($boats[0]->sid == $spot->sid) {{ "selected" }} @endif> {{ ucfirst($spot->spot) }} </option>--}}
-            {{--@endforeach--}}
-        {{--</select>--}}
-    {{--</div>--}}
 
     {!! Form::submit('Opslaan', array('class' => 'btn btn-success')) !!}
 
     {!! Form::close() !!}
+
+    @if ($errors->any())
+        <div class="alert alert-danger">
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
 
     @endauth
 

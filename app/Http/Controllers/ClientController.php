@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Boat;
 use App\Client;
+use App\Http\Requests\ClientRequest;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\View;
@@ -37,7 +38,7 @@ class ClientController extends Controller
         return View::make('clients.create', compact('clients', 'boats'))->withClient(new Client);
     }
 
-    public function store(Request $request)
+    public function store(ClientRequest $request)
     {
         Client::create($request->all());
 
@@ -53,7 +54,7 @@ class ClientController extends Controller
         return View::make('clients.edit', compact('clients', 'boats'));
     }
 
-    public function update($id, Request $request)
+    public function update($id, ClientRequest $request)
     {
 
 //        $clients = Client::select()->where('cid', '=', $id)->get();
