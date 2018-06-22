@@ -35,7 +35,9 @@ Route::get('/boats/{id}', 'BoatController@show');
 // Routes for storage
 Route::get('/', 'StorageController@index');
 Route::get('/storage/create', 'StorageController@create');
+Route::get('/storage/{id}/add', 'StorageController@addStorage');
 Route::get('/storage/{id}/edit', 'StorageController@edit');
 Route::post('/storage', 'StorageController@store');
 Route::patch('storage/edit/{id}', 'StorageController@update');
+Route::patch('updateStorage/edit/{id}', 'StorageController@updateStorage');
 Route::get('/storage/{id}', 'StorageController@show');

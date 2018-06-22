@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Boat;
 use App\Client;
+use App\Storage;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\View;
 
@@ -22,8 +23,13 @@ class BoatController extends Controller
             ->select('boats.*', 'clients.*')
             ->find($id);
 
+        $storage = Storage::with('boats')
+            ->join('boats', 'boats.bid', '=', 'storage.bid')
+            ->select('storage.bid', 'storage.spot', 'boats.bid')
+            ->find($id);
+
 //        dd($boat);
-        return view('boats.show', compact('boat'));
+        return View::make('boats.show', compact('boat', 'storage'));
     }
 
     public function create()
@@ -46,21 +52,24 @@ class BoatController extends Controller
     public function edit($id)
     {
         $boats = Boat::select()->where('bid', '=', $id)->get();
-//        $clients = Client::select('cid', 'bid', 'firstname', 'lastname')->get();
+        $storage = Storage::select('sid', 'bid', 'spot')->get();
 
-//        return View::make('boats.edit', compact('boats', 'clients'));
-        return view('boats.edit', compact('boats'));
+//        $boats = Boat::with('storage')
+//            ->join('storage', 'storage.sid', '=', 'boats.sid')
+//            ->select('storage.*', 'boats.*')
+//            ->find($id);
+
+        return View::make('boats.edit', compact('boats', 'storage'));
+//        return view('boats.edit', compact('boats'));
+
     }
 
     public function update($id, Request $request)
     {
-
-//        $boats = Boat::select()->where('bid', '=', $id)->get();
-//        $boats->update($request->all());
-
         $boats = Boat::findOrFail($id);
         $boats->update($request->all());
 
+//        dd($boats);
         return redirect('/boats');
     }
 

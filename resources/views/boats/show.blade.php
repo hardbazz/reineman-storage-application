@@ -6,7 +6,7 @@
         <h2>Eerst even inloggen</h2>
     @else
 
-        <h2>Klant: {{ ucfirst($boat->firstname) }} {{ ucfirst($boat->lastname) }}</h2>
+        <h2>Klant: {{ ucfirst($boat->firstname) }} {{ ucfirst($boat->lastname) }} @if(!empty($boat->spot)) - Plaats: {{ ucfirst($storage->spot) }} @else @endif</h2>
 
         <table class="table table-striped">
             <tr>

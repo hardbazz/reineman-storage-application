@@ -12,8 +12,7 @@ class Storage extends Model
     protected $primaryKey = 'sid';
 
     protected $fillable = [
-        'sid',
-        'cid',
+        'bid',
         'spot',
         'reserved'
     ];

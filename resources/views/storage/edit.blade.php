@@ -4,17 +4,21 @@
 
     <h1>Bewerk plaats</h1>
 
-    {!! Form::open(['method' => 'PATCH', 'url' => 'storage/edit/' . $storage->cid]) !!}
+    {!! Form::open(['method' => 'PATCH', 'url' => 'storage/edit/' . $storage->sid]) !!}
 
     {!! Form::hidden('sid', $storage->sid, '') !!}
+    {!! Form::hidden('bid', $boats[0]->bid, '') !!}
+    {!! Form::hidden('spot', $storage->spot, '') !!}
 
     <div class="form-group">
-        {!! Form::label('cid', 'Klant') !!}
+        {!! Form::label('bid', 'Boot') !!}
 
-        <select name="cid" class="form-control">
+        <select name="bid" class="form-control">
             <option value="">-</option>
-            @foreach($clients as $client)
-                <option value="{{ $client->cid }}" @if($client->cid == $storage->cid) {{ "selected" }} @endif> {{ ucfirst($client->firstname) . ' ' . ucfirst($client->lastname) }} </option>
+            @foreach($boats as $boat)
+                <option value="{{ $boat->bid }}" @if($boat->bid == $storage->bid) {{ "disabled" }} @endif>
+                    {{ ucfirst($boat->name) . ' ' . ucfirst($boat->model) }}
+                </option>
             @endforeach
         </select>
 

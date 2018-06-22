@@ -8,15 +8,9 @@
 
     @auth
 
-    @if(!empty($storage))
-
-    <h2>Plek: {{ $storage->spot }}</h2>
+    <h2>Plek: {{ ucfirst($storage->spot) }}</h2>
 
     <table class="table table-striped">
-        <tr>
-            <th>Klant:</th>
-            <td><a href="/client/{{ $storage->cid }}">{{ ucfirst($storage->firstname) }} {{ $storage->lastname}}</a></td>
-        </tr>
         <tr>
             <th>Boot</th>
             <td>{{ ucfirst($storage->name) }} {{ $storage->model }}</td>
@@ -36,20 +30,6 @@
             </td>
         </tr>
     </table>
-
-    @else
-
-        <h1>Voeg een boot toe</h1>
-
-        <table class="table table-striped">
-            <tr>
-                <td>
-                    <a href="/storage/create" class="btn btn-success">Voeg toe</a>
-                </td>
-            </tr>
-        </table>
-
-    @endif
 
     <a href="/" class="btn btn-primary"><i class="fa fa-angle-left"></i> Ga terug</a>
 
