@@ -2,6 +2,12 @@
 
 @section('content')
 
+    @guest
+    <h2>Eerst even inloggen</h2>
+    @endguest
+
+    @auth
+
     <h1>Bewerk plaats</h1>
 
     {!! Form::open(['method' => 'PATCH', 'url' => 'storage/edit/' . $storage->sid]) !!}
@@ -28,5 +34,7 @@
     {!! Form::submit('Opslaan', array('class' => 'btn btn-success')) !!}
 
     {!! Form::close() !!}
+
+    @endauth
 
 @stop

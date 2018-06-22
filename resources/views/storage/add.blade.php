@@ -2,6 +2,12 @@
 
 @section('content')
 
+    @guest
+    <h2>Eerst even inloggen</h2>
+    @endguest
+
+    @auth
+
     <h1>Boot plaatsen op {{ ucfirst($storage[0]->spot) }}</h1>
 
     {!! Form::open(['method' => 'PATCH', 'url' => 'updateStorage/edit/' . $storage[0]->sid]) !!}
@@ -26,5 +32,7 @@
     {!! Form::submit('Opslaan', array('class' => 'btn btn-success')) !!}
 
     {!! Form::close() !!}
+
+    @endauth
 
 @stop

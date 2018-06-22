@@ -2,6 +2,12 @@
 
 @section('content')
 
+    @guest
+    <h2>Eerst even inloggen</h2>
+    @endguest
+
+    @auth
+
     <h1>Klant toevoegen</h1>
 
     {!! Form::open(['url' => 'clients']) !!}
@@ -49,5 +55,7 @@
     {!! Form::submit('Opslaan', array('class' => 'btn btn-success')) !!}
 
     {!! Form::close() !!}
+
+    @endauth
 
 @stop

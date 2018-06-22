@@ -2,6 +2,12 @@
 
 @section('content')
 
+    @guest
+    <h2>Eerst even inloggen</h2>
+    @endguest
+
+    @auth
+
     <h1>Bewerk klant</h1>
 
     {!! Form::open(['method' => 'PATCH', 'url' => 'clients/edit/' . $clients->cid]) !!}
@@ -64,5 +70,7 @@
     {!! Form::submit('Opslaan', array('class' => 'btn btn-success')) !!}
 
     {!! Form::close() !!}
+
+    @endauth
 
 @stop
