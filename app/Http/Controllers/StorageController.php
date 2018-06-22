@@ -65,7 +65,7 @@ class StorageController extends Controller
     public function addStorage($id)
     {
         $storage = Storage::select('sid', 'bid', 'spot', 'reserved')->where('sid', '=', $id)->get();
-        $boats   = Boat::select('bid', 'name', 'model')->get();
+        $boats   = Boat::select('bid', 'name', 'model', 'placed')->get();
 
 //        dd($storage, $boats);
         return View::make('storage.add', compact('storage', 'boats'));

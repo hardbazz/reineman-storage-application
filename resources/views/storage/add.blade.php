@@ -17,8 +17,9 @@
         <select name="bid" class="form-control">
             <option value="">-</option>
             @foreach($boats as $boat)
-                <option value="{{ $boat->bid }}" @if($boat->placed == 1) {{ "disabled" }} @endif> {{ ucfirst($boat->name) . ' ' . ucfirst($boat->model) }} </option>
+                <option value="{{ $boat->bid }}" @if($boat->bid == $storage[0]->bid) {{ "disabled" }} @endif> {{ ucfirst($boat->name) . ' ' . ucfirst($boat->model) }} </option>
             @endforeach
+            <option value="">- Verwijder boot</option>
         </select>
     </div>
 
