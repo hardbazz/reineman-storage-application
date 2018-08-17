@@ -39,6 +39,5 @@ Route::get('/storage/{id}/add', 'StorageController@addStorage');
 Route::get('/storage/{id}/edit', 'StorageController@edit');
 Route::post('/storage', 'StorageController@store');
 Route::patch('storage/edit/{id}', 'StorageController@update');
-Route::patch('updateStorage/edit/{id}', 'StorageController@updateStorage');
-Route::patch('updateStorage/{id}', 'StorageController@clearStorage');
+Route::patch('/updateStorage/edit/{id}', 'StorageController@updateStorage');
 Route::get('/storage/{id}', 'StorageController@show');

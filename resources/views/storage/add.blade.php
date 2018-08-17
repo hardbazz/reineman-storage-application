@@ -13,6 +13,7 @@
     {!! Form::open(['method' => 'PATCH', 'url' => 'updateStorage/edit/' . $storage[0]->sid]) !!}
 
     {!! Form::hidden('sid', $storage[0]->sid, '') !!}
+    {{--{!! Form::hidden('bid', $storage[0]->sid, '') !!}--}}
 
     <div class="form-group">
         {!! Form::label('bid', 'Boot') !!}
@@ -20,24 +21,37 @@
         <select name="bid" class="form-control">
             <option value="">Kies een boot</option>
             @foreach($boats as $boat)
-                <option value="{{ $boat->bid }}" @if($boat->bid == $storage[0]->bid) {{ "selected" }} @endif> {{ ucfirst($boat->name) . ' ' . ucfirst($boat->model) }} </option>
+                <option value="{{ $boat->bid }}" id="
+                @foreach($bid as $bids)
+                    @if($boat->bid == $bids->bid) {{ $bids->sid }} @endif
+                @endforeach"
+                @if($boat->bid == $storage[0]->bid) {{ "selected" }} @endif
+                @foreach($bid as $bids)
+                    @if($boat->bid == $bids->bid) {{ "disabled style=color:red;" }} @endif
+                @endforeach
+                > {{ ucfirst($boat->name) . ' ' . ucfirst($boat->model) }} </option>
             @endforeach
+            <option value="0">- PLAATS VRIJMAKEN -</option>
         </select>
+
     </div>
 
-    @if(empty($storage[0]->bid))
     <div class="form-group">
         {!! Form::submit('Opslaan', array('class' => 'btn btn-success')) !!}
+        {{--{!! Form::submit( '0', ['class' => 'btn btn-danger', 'name' => 'bid', 'value' => '']) !!}--}}
     </div>
-    @else
-        <div class="form-group">
-            {!! Form::open([ 'controller'  => 'clearStorage@StorageController', 'url' => 'storage/' . $storage[0]->sid ]) !!}
-            {!! Form::submit('Plaats vrijmaken', ['class' => 'btn btn-danger']) !!}
-            {!! Form::close() !!}
-        </div>
-    @endif
 
     {!! Form::close() !!}
+
+    @if ($errors->any())
+        <div class="alert alert-danger">
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
 
     @endauth
 

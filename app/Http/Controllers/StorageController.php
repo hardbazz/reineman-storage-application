@@ -4,16 +4,19 @@ namespace App\Http\Controllers;
 
 use App\Boat;
 use App\Client;
+use App\Http\Requests\StorageRequest;
 use App\Storage;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\View;
+use Illuminate\Validation\Rule;
+use Illuminate\Validation\Validator;
 
 class StorageController extends Controller
 {
     public function index()
     {
-        $storage = Storage::all();
+        $storage = Storage::orderBy('sid', 'asc')->get();
 
         return view('storage.index', compact('storage'));
     }
@@ -65,27 +68,26 @@ class StorageController extends Controller
     public function addStorage($id)
     {
         $storage = Storage::select('sid', 'bid', 'spot', 'reserved')->where('sid', '=', $id)->get();
-        $boats   = Boat::select('bid', 'name', 'model', 'placed')->get();
+        $boats   = Boat::select('bid', 'name', 'model')->get();
+        $bid     = Storage::select('bid', 'sid')->get();
 
-//        dd($storage, $boats);
-        return View::make('storage.add', compact('storage', 'boats'));
+        return View::make('storage.add', compact('storage', 'boats', 'bid'));
     }
 
-    public function updateStorage($id, Request $request)
+    public function updateStorage(StorageRequest $request, $id)
     {
         $storage = Storage::findOrFail($id);
         $storage->update($request->except(['_method', '_token', 'sid']));
-//        dd($storage);
 
         return redirect('/');
     }
 
-    public function clearStorage($id)
-    {
-        $storage = Storage::findOrFail($id);
-        $storage->where('sid', '=', $id)->update(['bid' => '']);
-
-        return redirect('/');
-//        dd($storage->all());
-    }
+//    public function clearStorage($id)
+//    {
+//        $storage = Storage::findOrFail($id);
+//        $storage->where('sid', '=', $id)->update(['bid' => '0']);
+//
+////        dd($storage->all());
+//        return redirect('/');
+//    }
 }

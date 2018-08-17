@@ -16,8 +16,7 @@ class Boat extends Model
         'name',
         'model',
         'length',
-        'width',
-        'placed'
+        'width'
     ];
 
     public function clients()

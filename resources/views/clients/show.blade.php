@@ -25,10 +25,6 @@
             <th>Breedte</th>
             <td>{{ $client->width }} meter</td>
         </tr>
-        <tr>
-            <th>Plaats</th>
-            {{--<td>{{ ucfirst($client->spot) }}</td>--}}
-        </tr>
     </table>
 
     <a href="/clients" class="btn btn-primary"><i class="fa fa-angle-left"></i> Ga terug</a>

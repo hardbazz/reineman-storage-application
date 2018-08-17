@@ -21,11 +21,9 @@ class ClientController extends Controller
     public function show($id) {
         $client = Client::with('boats')
             ->join('boats', 'boats.bid', '=', 'clients.bid')
-//            ->join('storage', 'storage.cid', '=', 'clients.cid')
-            ->select('clients.*', 'boats.*') //, 'storage.*'
+            ->select('clients.*', 'boats.*')
             ->find($id);
 
-//        dd($client);
         return view('clients.show', compact('client'));
     }
 
@@ -34,7 +32,6 @@ class ClientController extends Controller
         $clients = Client::select('cid', 'bid')->get();
         $boats   = Boat::select('bid', 'name')->get();
 
-//        return view('clients.create', compact('clients'));
         return View::make('clients.create', compact('clients', 'boats'))->withClient(new Client);
     }
 
@@ -50,16 +47,11 @@ class ClientController extends Controller
         $clients = Client::findOrFail($id);
         $boats   = Boat::select('bid', 'name', 'model')->get();
 
-//        dd($boats);
         return View::make('clients.edit', compact('clients', 'boats'));
     }
 
     public function update($id, ClientRequest $request)
     {
-
-//        $clients = Client::select()->where('cid', '=', $id)->get();
-//        $clients->update($request->all());
-
         $clients = Client::findOrFail($id);
 
         $clients->update($request->all());

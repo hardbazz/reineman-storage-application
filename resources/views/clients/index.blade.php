@@ -8,7 +8,7 @@
 
     @auth
 
-    <h1>Klanten</h1>
+    <h1 class="text-center">Klanten</h1>
 
     <a href="/clients/create" class="btn_new btn btn-success float-left">+ Nieuw</a>
 

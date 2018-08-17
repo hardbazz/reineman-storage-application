@@ -2,6 +2,7 @@
 
 h1, h2 {
   margin: 25px 0;
+  color: #c00;
 }
 
 form {
@@ -10,9 +11,13 @@ form {
 
 /* End Standerd stylings */
 
+.bg-dark {
+  background-color: #14192d !important;
+}
+
 .spot {
   width: 100%;
-  height: 100px;
+  height: 120px;
   border-radius: 10px;
   text-align: center;
   padding-top: 35px;
@@ -53,5 +58,11 @@ form {
 @media (min-width: 992px) {
   .col-lg-3 {
     flex: 0 0 10%;
+  }
+}
+
+@media (min-width: 1200px) {
+  .loginpagina {
+    margin: 250px 0 0 300px;
   }
 }

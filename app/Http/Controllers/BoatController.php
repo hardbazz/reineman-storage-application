@@ -29,18 +29,14 @@ class BoatController extends Controller
             ->select('storage.bid', 'storage.spot', 'boats.bid')
             ->find($id);
 
-//        dd($boat);
         return View::make('boats.show', compact('boat', 'storage'));
     }
 
     public function create()
     {
         $boats   = Boat::select('bid', 'name')->get();
-//        $clients = Client::select('cid', 'bid')->get();
 
-//        dd($clients, $boats);
-//        return View::make('boats.create', compact('boats', 'clients'))->withClient(new Client);
-        return view('boats.create', compact('boats'));
+        return view('boats.create', compact('boats'))->withBoat(new Boat);
     }
 
     public function store(BoatRequest $request)
@@ -55,13 +51,7 @@ class BoatController extends Controller
         $boats = Boat::select()->where('bid', '=', $id)->get();
         $storage = Storage::select('sid', 'bid', 'spot')->get();
 
-//        $boats = Boat::with('storage')
-//            ->join('storage', 'storage.sid', '=', 'boats.sid')
-//            ->select('storage.*', 'boats.*')
-//            ->find($id);
-
         return View::make('boats.edit', compact('boats', 'storage'));
-//        return view('boats.edit', compact('boats'));
 
     }
 
@@ -70,7 +60,6 @@ class BoatController extends Controller
         $boats = Boat::findOrFail($id);
         $boats->update($request->all());
 
-//        dd($boats);
         return redirect('/boats');
     }
 

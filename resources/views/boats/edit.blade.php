@@ -13,7 +13,6 @@
     {!! Form::open(['method' => 'PATCH', 'url' => 'boats/edit/' . $boats[0]->bid]) !!}
 
     {!! Form::hidden('bid', $boats[0]->bid, '') !!}
-    {{--{!! Form::hidden('sid', $storage[0]->sid, '') !!}--}}
 
     <div class="form-group">
         {!! Form::label('name', 'Boot') !!}
