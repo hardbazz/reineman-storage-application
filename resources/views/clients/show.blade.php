@@ -26,8 +26,8 @@
             <td>{{ $client->width }} meter</td>
         </tr>
         <tr>
-            <th>Plaats</th>
-            <td>{{ ucfirst($client->spot) }}</td>
+            <th>Info boot</th>
+            <td><a href="/boats/{{ $client->bid }}">Klik hier</a></td>
         </tr>
     </table>
 

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Boat;
 use App\Client;
 use App\Http\Requests\ClientRequest;
+use App\Storage;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\View;
@@ -21,8 +22,7 @@ class ClientController extends Controller
     public function show($id) {
         $client = Client::with('boats')
             ->join('boats', 'boats.bid', '=', 'clients.bid')
-            ->join('storage', 'storage.bid', '=', 'clients.bid')
-            ->select('clients.*', 'boats.*', 'storage.spot')
+            ->select('clients.*', 'boats.*')
             ->find($id);
 
         return view('clients.show', compact('client'));
@@ -47,8 +47,9 @@ class ClientController extends Controller
     {
         $clients = Client::findOrFail($id);
         $boats   = Boat::select('bid', 'name', 'model')->get();
+        $bid     = Storage::select('bid', 'sid')->get();
 
-        return View::make('clients.edit', compact('clients', 'boats'));
+        return View::make('clients.edit', compact('clients', 'boats', 'bid'));
     }
 
     public function update($id, ClientRequest $request)

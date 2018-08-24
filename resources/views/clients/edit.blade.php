@@ -60,7 +60,12 @@
         <select name="bid" class="form-control">
             <option value="0">-</option>
             @foreach($boats as $boat)
-                <option value="{{ $boat->bid }}" @if($clients->bid == $boat->bid) {{ "selected" }} @endif> {{ ucfirst($boat->name) . ' ' . $boat->model }} </option>
+                <option value="{{ $boat->bid }}"
+                @if($clients->bid == $boat->bid) {{ "selected" }} @endif
+                @foreach($bid as $bids)
+                    @if($boat->bid == $bids->bid) {{ "disabled style=color:red;" }} @endif
+                @endforeach
+                > {{ ucfirst($boat->name) . ' ' . $boat->model }} </option>
             @endforeach
         </select>
 
