@@ -13,7 +13,7 @@ class ClientController extends Controller
 {
     public function index()
     {
-        $clients = Client::all();
+        $clients = Client::orderBy('cid', 'asc')->get();
 
         return view('clients.index', compact('clients'));
     }
@@ -21,7 +21,8 @@ class ClientController extends Controller
     public function show($id) {
         $client = Client::with('boats')
             ->join('boats', 'boats.bid', '=', 'clients.bid')
-            ->select('clients.*', 'boats.*')
+            ->join('storage', 'storage.bid', '=', 'clients.bid')
+            ->select('clients.*', 'boats.*', 'storage.spot')
             ->find($id);
 
         return view('clients.show', compact('client'));

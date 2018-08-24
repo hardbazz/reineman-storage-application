@@ -1,6 +1,9 @@
 @extends('app')
 
 @section('content')
+
+@if(Auth::user()->role == "admin" )
+
 <div class="container">
     <div class="row">
         <div class="col-md-8 col-md-offset-2 loginpagina">
@@ -68,6 +71,9 @@
                                 <button type="submit" class="btn btn-primary">
                                     Register
                                 </button>
+                                <a class="btn btn-link" href="{{ route('password.request') }}">
+                                    Forgot Your Password?
+                                </a>
                             </div>
                         </div>
                     </form>
@@ -76,4 +82,16 @@
         </div>
     </div>
 </div>
+
+@else
+
+    <p>Je bent niet geauthoriseerd om deze pagina te bekijken.</p>
+    <p>Terug naar de stalling in 3 .. 2 .. 1</p>
+
+    <script>
+        window.location.replace("/");
+    </script>
+
+@endif
+
 @endsection

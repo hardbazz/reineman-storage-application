@@ -13,7 +13,7 @@ class BoatController extends Controller
 {
     public function index()
     {
-        $boats = Boat::all();
+        $boats = Boat::orderBy('bid', 'asc')->get();
 
         return view('boats.index', compact('boats'));
     }
@@ -27,7 +27,7 @@ class BoatController extends Controller
         $storage = Storage::with('boats')
             ->join('boats', 'boats.bid', '=', 'storage.bid')
             ->select('storage.bid', 'storage.spot', 'boats.bid')
-            ->find($id);
+            ->get();
 
         return View::make('boats.show', compact('boat', 'storage'));
     }

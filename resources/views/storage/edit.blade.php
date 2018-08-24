@@ -3,7 +3,7 @@
 @section('content')
 
     @guest
-    <h2>Eerst even inloggen</h2>
+        @include('login')
     @endguest
 
     @auth

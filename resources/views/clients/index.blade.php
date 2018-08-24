@@ -3,7 +3,7 @@
 @section('content')
 
     @guest
-        <h2>Eerst even inloggen</h2>
+        @include('login')
     @endguest
 
     @auth
@@ -41,7 +41,7 @@
                 <td><a href="/clients/{{ $client->cid }}/edit" class="btn btn-primary">Bewerk</a></td>
                 <td>
                     {!! Form::open([ 'method'  => 'DELETE', 'url' => 'clients/' . $client->cid ]) !!}
-                    {!! Form::submit('Verwijder', ['class' => 'btn btn-danger']) !!}
+                    {!! Form::submit('Verwijder', ['class' => 'btn btn-danger', 'onclick' => 'return confirm("Weet je het zeker?")']) !!}
                     {!! Form::close() !!}
                 </td>
             </tr>

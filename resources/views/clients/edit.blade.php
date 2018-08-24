@@ -3,7 +3,7 @@
 @section('content')
 
     @guest
-    <h2>Eerst even inloggen</h2>
+        @include('login')
     @endguest
 
     @auth
@@ -58,7 +58,7 @@
         {!! Form::label('bid', 'Boot') !!}
 
         <select name="bid" class="form-control">
-            <option value="">-</option>
+            <option value="0">-</option>
             @foreach($boats as $boat)
                 <option value="{{ $boat->bid }}" @if($clients->bid == $boat->bid) {{ "selected" }} @endif> {{ ucfirst($boat->name) . ' ' . $boat->model }} </option>
             @endforeach

@@ -3,7 +3,7 @@
 @section('content')
 
     @guest
-    <h2>Eerst even inloggen</h2>
+        @include('login')
     @endguest
 
     @auth
@@ -31,17 +31,20 @@
                 @endforeach
                 > {{ ucfirst($boat->name) . ' ' . ucfirst($boat->model) }} </option>
             @endforeach
-            <option value="0">- PLAATS VRIJMAKEN -</option>
         </select>
 
     </div>
 
     <div class="form-group">
         {!! Form::submit('Opslaan', array('class' => 'btn btn-success')) !!}
-        {{--{!! Form::submit( '0', ['class' => 'btn btn-danger', 'name' => 'bid', 'value' => '']) !!}--}}
+        <button href="{{ action('StorageController@addStorage', $storage[0]->sid) }}" type="submit" value="0" name="bid" onclick="return confirm('Weet je het zeker?')" class="btn btn-danger float-right">Boot wissen</button>
     </div>
 
     {!! Form::close() !!}
+
+    <div class="form-group">
+        <a href="/" class="btn btn-primary">< Terug</a>
+    </div>
 
     @if ($errors->any())
         <div class="alert alert-danger">

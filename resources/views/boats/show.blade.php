@@ -3,14 +3,14 @@
 @section('content')
 
     @guest
-        <h2>Eerst even inloggen</h2>
+        @include('login')
     @endguest
 
     @auth
 
         @if(!empty($boat))
 
-        <h2>Klant: {{ ucfirst($boat->firstname) }} {{ ucfirst($boat->lastname) }} @if(!empty($boat->spot)) - Plaats: {{ ucfirst($storage->spot) }} @else @endif</h2>
+        <h2>Klant: {{ ucfirst($boat->firstname) }} {{ ucfirst($boat->lastname) }}</h2>
 
         <table class="table table-striped">
             <tr>
@@ -32,6 +32,14 @@
             <tr>
                 <th>E-mail</th>
                 <td><a href="mailto:{{ $boat->email }}">{{ $boat->email }}</a></td>
+            </tr>
+            <tr>
+                <th></th>
+                <td></td>
+            </tr>
+            <tr>
+                <th>Boot</th>
+                <td><a href="/client/{{ $boat->cid }}">{{ $boat->name . ' ' . $boat->model }}</a></td>
             </tr>
         </table>
 

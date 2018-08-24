@@ -3,7 +3,7 @@
 @section('content')
 
     @guest
-        <h2>Eerst even inloggen</h2>
+        @include('login')
     @endguest
 
     @auth
@@ -24,6 +24,10 @@
         <tr>
             <th>Breedte</th>
             <td>{{ $client->width }} meter</td>
+        </tr>
+        <tr>
+            <th>Plaats</th>
+            <td>{{ ucfirst($client->spot) }}</td>
         </tr>
     </table>
 

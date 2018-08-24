@@ -26,7 +26,8 @@
 <body>
 
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <a class="navbar-brand" href="/">Reineman Watersport</a>
+    {{--<a class="navbar-brand" href="/">Reineman Watersport</a>--}}
+    <a class="navbar-brand" href="/"><img src="{{ asset('img/logo-reineman.png') }}" alt="Reineman Watersport"></a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
@@ -46,6 +47,11 @@
             <li class="nav-item">
                 <a class="nav-link" href="/boats">Boten</a>
             </li>
+            @if(Auth::user()->role == "admin" )
+            <li class="nav-item">
+                <a class="nav-link" href="{{ route('register') }}">Medewerker toevoegen</a>
+            </li>
+            @endif
         </ul>
         {{--<form class="form-inline my-2 my-lg-0">--}}
             {{--<input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">--}}

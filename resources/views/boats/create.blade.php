@@ -3,7 +3,7 @@
 @section('content')
 
     @guest
-    <h2>Eerst even inloggen</h2>
+        @include('login')
     @endguest
 
     @auth
@@ -14,22 +14,22 @@
 
     <div class="form-group">
         {!! Form::label('name', 'Boot') !!}
-        {!! Form::text('name', old('name', $boats[0]->name), array('class' => 'form-control')) !!}
+        {!! Form::text('name', old('name'), array('class' => 'form-control')) !!}
     </div>
 
     <div class="form-group">
         {!! Form::label('model', 'Model') !!}
-        {!! Form::text('model', old('model', $boats[0]->model), array('class' => 'form-control')) !!}
+        {!! Form::text('model', old('model'), array('class' => 'form-control')) !!}
     </div>
 
     <div class="form-group">
         {!! Form::label('length', 'Lengte') !!}
-        {!! Form::text('length', old('length', $boats[0]->length), array('class' => 'form-control')) !!}
+        {!! Form::text('length', old('length'), array('class' => 'form-control')) !!}
     </div>
 
     <div class="form-group">
         {!! Form::label('width', 'Breedte') !!}
-        {!! Form::text('width', old('width', $boats[0]->width), array('class' => 'form-control')) !!}
+        {!! Form::text('width', old('width'), array('class' => 'form-control')) !!}
     </div>
 
     {!! Form::submit('Opslaan', array('class' => 'btn btn-success')) !!}

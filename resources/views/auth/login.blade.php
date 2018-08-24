@@ -7,6 +7,8 @@
             <div class="panel panel-default">
                 <div class="panel-heading"></div>
 
+                <h2>Eerst even inloggen</h2>
+
                 <div class="panel-body">
                     <form class="form-horizontal" method="POST" action="{{ route('login') }}">
                         {{ csrf_field() }}
@@ -55,12 +57,12 @@
                                     Login
                                 </button>
 
-                                <a class="btn btn-link" href="{{ route('password.request') }}">
-                                    Forgot Your Password?
-                                </a>
-                                <a class="btn btn-link" href="{{ route('register') }}">
-                                    Register
-                                </a>
+                                {{--<a class="btn btn-link" href="{{ route('password.request') }}">--}}
+                                    {{--Forgot Your Password?--}}
+                                {{--</a>--}}
+                                {{--<a class="btn btn-link" href="{{ route('register') }}">--}}
+                                    {{--Register--}}
+                                {{--</a>--}}
                             </div>
                         </div>
                     </form>
