@@ -9,6 +9,12 @@ form {
   margin: 0 0 25px 0;
 }
 
+@media (min-width: 1px) and (max-width: 1200px) {
+  .hidden-mobile {
+    display: none;
+  }
+}
+
 /* End Standerd stylings */
 
 .bg-dark {

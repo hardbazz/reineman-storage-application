@@ -17,9 +17,9 @@
             <tr>
                 <th scope="col">#</th>
                 <th scope="col">Naam</th>
-                <th scope="col">Straat</th>
-                <th scope="col">Postcode</th>
-                <th scope="col">Plaats</th>
+                <th scope="col" class="hidden-mobile">Straat</th>
+                <th scope="col" class="hidden-mobile">Postcode</th>
+                <th scope="col" class="hidden-mobile">Plaats</th>
                 <th scope="col">Telefoon</th>
                 <th scope="col">E-mail</th>
                 <th scope="col">Boot</th>
@@ -32,9 +32,9 @@
             <tr>
                 <th scope="row">{{ $key+1 }}</th>
                 <td>{{ $client->firstname . ' ' . $client->lastname }}</td>
-                <td>{{ $client->street . ' ' . $client->housenumber }}</td>
-                <td>{{ $client->zipcode }}</td>
-                <td>{{ $client->city }}</td>
+                <td class="hidden-mobile">{{ $client->street . ' ' . $client->housenumber }}</td>
+                <td class="hidden-mobile">{{ $client->zipcode }}</td>
+                <td class="hidden-mobile">{{ $client->city }}</td>
                 <td><a href="tel:{{ $client->phone }}">{{ $client->phone }}</a></td>
                 <td><a href="mailto:{{ $client->email }}">{{ $client->email }}</a></td>
                 <td><a href="client/{{ $client->cid }}"><i class="fa fa-2x fa-info"></i></a></td>
