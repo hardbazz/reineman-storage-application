@@ -47,7 +47,7 @@ class ClientController extends Controller
     {
         $clients = Client::findOrFail($id);
         $boats   = Boat::select('bid', 'name', 'model')->get();
-        $bid     = Storage::select('bid', 'sid')->get();
+        $bid     = Client::select('bid')->get();
 
         return View::make('clients.edit', compact('clients', 'boats', 'bid'));
     }
