@@ -20,13 +20,13 @@
 
         <select name="bid" class="form-control">
             <option value="">Kies een boot</option>
-            @foreach($boats as $boat)
+            @foreach($boats as $boat) <!-- Deze foreach loopt door alle boten -->
                 <option value="{{ $boat->bid }}" id="
-                @foreach($bid as $bids)
+                @foreach($bid as $bids) {{-- Deze foreach loopt door de IDs van de boten en zoekt de stalling ID die daarbij hoort --}}
                     @if($boat->bid == $bids->bid) {{ $bids->sid }} @endif
                 @endforeach"
                 @if($boat->bid == $storage[0]->bid) {{ "selected" }} @endif
-                @foreach($bid as $bids)
+                @foreach($bid as $bids) {{-- Deze foreach loopt door de IDs van de boten en zoekt de boten die al zijn ingedeeld --}}
                     @if($boat->bid == $bids->bid) {{ "disabled style=color:red;" }} @endif
                 @endforeach
                 > {{ ucfirst($boat->name) . ' ' . ucfirst($boat->model) }} </option>

@@ -44,6 +44,15 @@ class Handler extends ExceptionHandler
      */
     public function render($request, Exception $exception)
     {
+        if ($exception instanceof \Illuminate\Session\TokenMismatchException) {
+
+            return redirect()
+                ->back()
+                ->withInput($request->except('_token'))
+                ->withMessage('Doordat er te lang geen activiteit is geweest bent u uitgelogd.');
+
+        }
+
         return parent::render($request, $exception);
     }
 

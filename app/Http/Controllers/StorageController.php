@@ -81,13 +81,4 @@ class StorageController extends Controller
 
         return redirect('/');
     }
-
-//    public function clearStorage($id)
-//    {
-//        $storage = Storage::findOrFail($id);
-//        $storage->where('sid', '=', $id)->update(['bid' => '0']);
-//
-////        dd($storage->all());
-//        return redirect('/');
-//    }
 }
