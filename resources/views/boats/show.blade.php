@@ -37,10 +37,6 @@
                 <th></th>
                 <td></td>
             </tr>
-            <tr>
-                <th>Boot</th>
-                <td><a href="/client/{{ $boat->cid }}">{{ $boat->name . ' ' . $boat->model }}</a></td>
-            </tr>
         </table>
 
         <a href="/boats" class="btn btn-primary"><i class="fa fa-angle-left"></i> Ga terug</a>

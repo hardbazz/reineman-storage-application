@@ -12,11 +12,12 @@ class Boat extends Model
 
     protected $fillable = [
         'bid',
-        'sid',
+        'cid',
         'name',
         'model',
         'length',
-        'width'
+        'width',
+        'photo'
     ];
 
     public function clients()

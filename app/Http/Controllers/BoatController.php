@@ -24,12 +24,7 @@ class BoatController extends Controller
             ->select('boats.*', 'clients.*')
             ->find($id);
 
-        $storage = Storage::with('boats')
-            ->join('boats', 'boats.bid', '=', 'storage.bid')
-            ->select('storage.bid', 'storage.spot', 'boats.bid')
-            ->get();
-
-        return View::make('boats.show', compact('boat', 'storage'));
+        return View::make('boats.show', compact('boat'));
     }
 
     public function create()
@@ -49,14 +44,30 @@ class BoatController extends Controller
     public function edit($id)
     {
         $boats = Boat::select()->where('bid', '=', $id)->get();
+        $clients = Client::select('cid', 'bid','firstname', 'lastname')->get();
         $storage = Storage::select('sid', 'bid', 'spot')->get();
 
-        return View::make('boats.edit', compact('boats', 'storage'));
+        return View::make('boats.edit', compact('boats', 'clients','storage', 'cid'));
 
     }
 
     public function update($id, BoatRequest $request)
     {
+        if($request->hasFile('photo')){
+            // Get filename with the extension
+            $filenameWithExt = $request->file('photo')->getClientOriginalName();
+            // Get just filename
+            $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
+            //Get just ext
+            $extension = $request->file('photo')->getClientOriginalExtension();
+            // Filename to store
+            $filenameToStore = $filename.'_'.time().'.'.$extension;
+            // Upload image
+            $path = $request->file('photo')->storeAs('public/photo', $filenameToStore);
+        } else {
+            $filenameToStore = 'no_image.jpg';
+        }
+
         $boats = Boat::findOrFail($id);
         $boats->update($request->all());
 

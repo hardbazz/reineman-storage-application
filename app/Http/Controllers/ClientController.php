@@ -19,11 +19,21 @@ class ClientController extends Controller
         return view('clients.index', compact('clients'));
     }
 
+//    public function show($id) {
+//        $client = Client::with('boats')
+//            ->join('boats', 'boats.bid', '=', 'clients.bid')
+//            ->select('clients.*', 'boats.*')
+//            ->find($id);
+//
+//        return view('clients.show', compact('client'));
+//    }
+
     public function show($id) {
-        $client = Client::with('boats')
-            ->join('boats', 'boats.bid', '=', 'clients.bid')
+        $client = Boat::with('clients')
+            ->join('clients', 'clients.cid', '=', 'boats.cid')
             ->select('clients.*', 'boats.*')
-            ->find($id);
+            ->where('boats.cid', '=', $id)
+            ->get();
 
         return view('clients.show', compact('client'));
     }
@@ -55,7 +65,6 @@ class ClientController extends Controller
     public function update($id, ClientRequest $request)
     {
         $clients = Client::findOrFail($id);
-
         $clients->update($request->all());
 
 //        dd($clients);

@@ -10,7 +10,7 @@
 
     <h1>Bewerk {{ $boats[0]->name . ' ' . $boats[0]->model }}</h1>
 
-    {!! Form::open(['method' => 'PATCH', 'url' => 'boats/edit/' . $boats[0]->bid]) !!}
+    {!! Form::open(['method' => 'PATCH', 'enctype' => 'multipart/form-data', 'url' => 'boats/edit/' . $boats[0]->bid]) !!}
 
     {!! Form::hidden('bid', $boats[0]->bid, '') !!}
 
@@ -34,6 +34,24 @@
         {!! Form::text('width', old('width', $boats[0]->width), array('class' => 'form-control')) !!}
     </div>
 
+    <div class="form-group">
+        {!! Form::label('photo', 'Foto') !!}
+        {!! Form::file('photo') !!}
+    </div>
+
+    <div class="form-group">
+        {!! Form::label('cid', 'Klant') !!}
+
+        <select name="cid" class="form-control">
+            <option value="0">-</option>
+            @foreach($clients as $client)
+                <option value="{{ $client->cid }}"
+                @if($boats[0]->cid == $client->cid) {{ "selected disabled" }} @endif
+                > {{ ucfirst($client->firstname) . ' ' . $client->lastname }} </option>
+            @endforeach
+        </select>
+
+    </div>
 
     {!! Form::submit('Opslaan', array('class' => 'btn btn-success')) !!}
 
