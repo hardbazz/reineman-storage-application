@@ -19,9 +19,9 @@ class ClientController extends Controller
         return view('clients.index', compact('clients'));
     }
 
-    public function show($id) {
-        $client = Boat::with('clients')
-            ->join('clients', 'clients.cid', '=', 'boats.cid')
+    public function show ($id) {
+        $client = Client::with('boats')
+            ->join('boats', 'boats.cid', '=', 'clients.cid')
             ->select('clients.*', 'boats.*')
             ->where('boats.cid', '=', $id)
             ->get();

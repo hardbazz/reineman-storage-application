@@ -1,5 +1,9 @@
 /* Standerd stylings */
 
+html, body {
+  font-family: Roboto;
+}
+
 h1, h2 {
   margin: 25px 0;
   color: #c00;
@@ -36,11 +40,11 @@ form {
 }
 
 .free {
-  background-color: #008000;
+  background-color: #0000ff;
 }
 
 .taken {
-  background-color: #ff0000;
+  background-color: #808080;
 }
 
 .reserved {
