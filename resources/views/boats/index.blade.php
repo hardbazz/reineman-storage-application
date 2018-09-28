@@ -20,7 +20,7 @@
             <th scope="col">Model</th>
             <th scope="col">Lengte</th>
             <th scope="col">Breedte</th>
-            <th scope="col">Klant</th>
+            <th scope="col">Foto</th>
             <th scope="col"></th>
             <th scope="col"></th>
         </tr>
@@ -33,7 +33,11 @@
             <td>{{ $boat->model }}</td>
             <td>{{ $boat->length }} meter</td>
             <td>{{ $boat->width }} meter</td>
-            <td><a href="boats/{{ $boat->bid }}"><i class="fa fa-2x fa-info"></i></a></td>
+            @if(empty($boat->photo))
+                <td><a href="boats/{{ $boat->bid }}" class="not-active"><i class="fa fa-2x fa-info" style="color: #808080"></i></a></td>
+            @else
+                <td><a href="boats/{{ $boat->bid }}"><i class="fa fa-2x fa-info"></i></a></td>
+            @endif
             <td><a href="/boats/{{ $boat->bid }}/edit" class="btn btn-primary">Bewerk</a></td>
             <td>
                 {!! Form::open([ 'method'  => 'DELETE', 'url' => 'boats/' . $boat->bid ]) !!}

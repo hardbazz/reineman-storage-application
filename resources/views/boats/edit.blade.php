@@ -46,7 +46,7 @@
             <option value="0">-</option>
             @foreach($clients as $client)
                 <option value="{{ $client->cid }}"
-                @if($boats[0]->cid == $client->cid) {{ "selected disabled" }} @endif
+                @if($boats[0]->cid == $client->cid) {{ "selected" }} @endif
                 > {{ ucfirst($client->firstname) . ' ' . $client->lastname }} </option>
             @endforeach
         </select>

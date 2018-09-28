@@ -7,6 +7,7 @@ use App\Client;
 use App\Http\Requests\BoatRequest;
 use App\Storage;
 use Illuminate\Http\Request;
+use Illuminate\Foundation\helpers;
 use Illuminate\Support\Facades\View;
 
 class BoatController extends Controller
@@ -19,10 +20,7 @@ class BoatController extends Controller
     }
 
     public function show($id) {
-        $boat = Boat::with('clients')
-            ->join('clients', 'clients.bid', '=', 'boats.bid')
-            ->select('boats.*', 'clients.*')
-            ->find($id);
+        $boat = Boat::findOrFail($id);
 
         return View::make('boats.show', compact('boat'));
     }
@@ -30,13 +28,38 @@ class BoatController extends Controller
     public function create()
     {
         $boats   = Boat::select('bid', 'name')->get();
+        $clients = Client::select('cid', 'bid','firstname', 'lastname')->get();
 
-        return view('boats.create', compact('boats'))->withBoat(new Boat);
+        return view('boats.create', compact('boats', 'clients'))->withBoat(new Boat);
     }
 
     public function store(BoatRequest $request)
     {
-        Boat::create($request->all());
+        if($request->hasFile('photo')){
+            // Pak de bestandsnaam met de extensie
+            $filenameWithExt = $request->file('photo')->getClientOriginalName();
+            // Pak alleen de naam van het bestand
+            $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
+            // Pak alleen de extensie van het bestand
+            $extension = $request->file('photo')->getClientOriginalExtension();
+            // Maak een bestandsnaam voor de database
+            $filenameToStore = $filename.'_'.time().'.'.$extension;
+            // Upload het bestand
+            $path = $request->file('photo')->storeAs('public/photo', $filenameToStore);
+        } else {
+            $filenameToStore = '';
+        }
+
+//        Boat::create($request->all());
+        $boats = new Boat();
+        $boats->name    = $request['name'];
+        $boats->model   = $request['model'];
+        $boats->length  = $request['length'];
+        $boats->width   = $request['width'];
+        $boats->cid     = $request['cid'];
+        $boats->bid     = $request['bid'];
+        $boats->photo   = $filenameToStore;
+        $boats->save();
 
         return redirect('/boats');
     }
@@ -53,23 +76,32 @@ class BoatController extends Controller
 
     public function update($id, BoatRequest $request)
     {
+        $boats = Boat::findOrFail($id);
+        //$boats->update($request->all());
+
         if($request->hasFile('photo')){
-            // Get filename with the extension
+            // Pak de bestandsnaam met de extensie
             $filenameWithExt = $request->file('photo')->getClientOriginalName();
-            // Get just filename
+            // Pak alleen de naam van het bestand
             $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
-            //Get just ext
+            // Pak alleen de extensie van het bestand
             $extension = $request->file('photo')->getClientOriginalExtension();
-            // Filename to store
+            // Maak een bestandsnaam voor de database
             $filenameToStore = $filename.'_'.time().'.'.$extension;
-            // Upload image
+            // Upload het bestand
             $path = $request->file('photo')->storeAs('public/photo', $filenameToStore);
-        } else {
-            $filenameToStore = 'no_image.jpg';
         }
 
-        $boats = Boat::findOrFail($id);
-        $boats->update($request->all());
+        $boats->cid     = $request['cid'];
+        $boats->bid     = $request['bid'];
+        $boats->name    = $request['name'];
+        $boats->model   = $request['model'];
+        $boats->length  = $request['length'];
+        $boats->width   = $request['width'];
+        if($request->hasFile('photo')) {
+            $boats->photo = $filenameToStore;
+        }
+        $boats->update();
 
         return redirect('/boats');
     }

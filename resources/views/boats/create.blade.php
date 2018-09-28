@@ -10,7 +10,7 @@
 
     <h1>Boot toevoegen</h1>
 
-    {!! Form::open(['url' => 'boats']) !!}
+    {!! Form::open(['url' => 'boats', 'enctype' => 'multipart/form-data']) !!}
 
     <div class="form-group">
         {!! Form::label('name', 'Boot') !!}
@@ -30,6 +30,25 @@
     <div class="form-group">
         {!! Form::label('width', 'Breedte') !!}
         {!! Form::text('width', old('width'), array('class' => 'form-control')) !!}
+    </div>
+
+    <div class="form-group">
+        {!! Form::label('photo', 'Foto') !!}
+        {!! Form::file('photo') !!}
+    </div>
+
+    <div class="form-group">
+        {!! Form::label('cid', 'Klant') !!}
+
+        <select name="cid" class="form-control">
+            <option value="0">-</option>
+            @foreach($clients as $client)
+                <option value="{{ $client->cid }}"
+                @if($boats[0]->cid == $client->cid) {{ "selected" }} @endif
+                > {{ ucfirst($client->firstname) . ' ' . $client->lastname }} </option>
+            @endforeach
+        </select>
+
     </div>
 
     {!! Form::submit('Opslaan', array('class' => 'btn btn-success')) !!}
